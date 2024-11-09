@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div role="checkbox" aria-checked="false" tabindex="0" id="customCheckbox" style="display: inline-block; width: 20px; height: 20px; background-color: #eee;">
+  </div>
+  <label for="customCheckbox">Accept Terms and Conditions</label>
+
+</body>
+</html>
+
+
+<script>
+  const checkbox = document.getElementById('customCheckbox');
+  
+  checkbox.addEventListener('click', function() {
+    // Toggle aria-checked state
+    const isChecked = this.getAttribute('aria-checked') === 'true';
+    this.setAttribute('aria-checked', !isChecked);
+    
+    // Update visual appearance based on state
+    this.style.backgroundColor = isChecked ? '#eee' : '#4CAF50'; // Green when checked
+  });
+
+  checkbox.addEventListener('keydown', function(event) {
+    // Allow keyboard interaction with Enter or Space
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.click(); // Trigger click on Enter/Space key
+      event.preventDefault();
+    }
+  });
+</script>
